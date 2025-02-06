@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from starlette.requests import Request
 
 # from ray import serve
-import serve
+from ray import serve
 from qwentransformers import Qwen2dot5
 
 # Configure logging
