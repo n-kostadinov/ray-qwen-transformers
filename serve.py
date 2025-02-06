@@ -16,7 +16,7 @@ logger = logging.getLogger("ray.serve")
 
 app = FastAPI()
 
-@serve.deployment(name="Qwen2dot5Deployment")
+@serve.deployment(name="Qwen2dot5Deployment", num_replicas=1, ray_actor_options={"num_gpus": 1})
 @serve.ingress(app)
 class Qwen2dot5Deployment:
     def __init__(
