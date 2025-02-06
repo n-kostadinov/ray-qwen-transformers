@@ -60,7 +60,7 @@ class Qwen2dot5:
             args["temperature"] = request["temperature"]
         return args
 
-    def predict(self, request):
+    def create_chat_completions(self, request):
         self.logger.info("Request: %s", request)
         self.fix_message_for_qwen(request["messages"])
 

@@ -25,16 +25,10 @@ class Qwen2dot5Deployment:
     ):
         self.qwen = Qwen2dot5(logger, model_name)
 
-    @app.post("/v1/chat/completions")
-    async def create_chat_completion(
-            self, raw_request: Request
-    ):
-        self.qwen.create_chat_completion(raw_request)
-
     @app.post("/v1/chat/completions", response_model=Any)
-    async def create_chat_completion(self, raw_request: Request):
+    async def create_chat_completions(self, raw_request: Request):
         request_body = await raw_request.json()
-        return self.qwen.predict(request_body)
+        return self.qwen.create_chat_completions(request_body)
 
 
 def build_app(cli_args: Dict[str, str]) -> serve.Application:
