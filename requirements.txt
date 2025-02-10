@@ -3,4 +3,5 @@ qwen-vl-utils==0.0.10
 accelerate==1.3.0
 torchvision==0.21.0
 uvicorn==0.34.0
+vllm==0.7.2
 git+https://github.com/huggingface/transformers#egg=transformers
