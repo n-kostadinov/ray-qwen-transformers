@@ -49,7 +49,7 @@ class VLLMDeployment:
         lora_modules: Optional[List[LoRAModulePath]] = None,
         prompt_adapters: Optional[List[PromptAdapterPath]] = None,
         request_logger: Optional[RequestLogger] = None,
-        chat_template: Optional[str] = None,
+        chat_template: Optional[str] = None
     ):
         logger.info(f"Starting with engine args: {engine_args}")
         self.openai_serving_chat = None
@@ -90,6 +90,8 @@ class VLLMDeployment:
                 models,
                 self.response_role,
                 request_logger=self.request_logger,
+                enable_auto_tools=True,
+                tool_parser="hermes",
                 chat_template=self.chat_template,
                 chat_template_content_format="auto",
             )
@@ -172,7 +174,7 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     )
 
 model = build_app(
-    {"model": os.environ['MODEL_ID'], "tensor-parallel-size": os.environ['TENSOR_PARALLELISM'], "pipeline-parallel-size": os.environ['PIPELINE_PARALLELISM'], "dtype": os.environ['VLLM_DTYPE'], "quantization": os.environ['VLLM_QUANTIZATION'], "device": os.environ['VLLM_DEVICE'], "gpu-memory-utilization": os.environ['VLLM_GPU_MEMORY_UTILIZATION'], "max-model-len": os.environ["VLLM_MAX_MODEL_LEN"], "enable-auto-tool-choice": "True", "tool-call-parser": "hermes"})
+    {"model": os.environ['MODEL_ID'], "tensor-parallel-size": os.environ['TENSOR_PARALLELISM'], "pipeline-parallel-size": os.environ['PIPELINE_PARALLELISM'], "dtype": os.environ['VLLM_DTYPE'], "quantization": os.environ['VLLM_QUANTIZATION'], "device": os.environ['VLLM_DEVICE'], "gpu-memory-utilization": os.environ['VLLM_GPU_MEMORY_UTILIZATION'], "max-model-len": os.environ["VLLM_MAX_MODEL_LEN"]})
 
 # # __serve_example_end__
 #
