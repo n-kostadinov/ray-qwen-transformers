@@ -172,7 +172,7 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     )
 
 model = build_app(
-    {"model": os.environ['MODEL_ID'], "tensor-parallel-size": os.environ['TENSOR_PARALLELISM'], "pipeline-parallel-size": os.environ['PIPELINE_PARALLELISM'], "dtype": os.environ['VLLM_DTYPE'], "quantization": os.environ['VLLM_QUANTIZATION']})
+    {"model": os.environ['MODEL_ID'], "tensor-parallel-size": os.environ['TENSOR_PARALLELISM'], "pipeline-parallel-size": os.environ['PIPELINE_PARALLELISM'], "dtype": os.environ['VLLM_DTYPE'], "quantization": os.environ['VLLM_QUANTIZATION'], "device": os.environ['VLLM_DEVICE']})
 
 # # __serve_example_end__
 #
