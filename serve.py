@@ -146,6 +146,7 @@ def build_app(cli_args: Dict[str, str]) -> serve.Application:
     engine_args.worker_use_ray = True
 
     tp = engine_args.tensor_parallel_size
+    engine_args.trust_remote_code = True
     logger.info(f"Tensor parallelism = {tp}")
     # pg_resources = []
     # pg_resources.append({"CPU": 1})  # for the deployment replica
